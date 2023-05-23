@@ -1,4 +1,4 @@
-// DOM 
+// DOM Selections
 
 const container = document.getElementById('container')
 
@@ -7,16 +7,18 @@ const paper = document.querySelector('.paper')
 const scissors = document.querySelector('.scissors')
 const display = document.querySelector('.display')
 const reset = document.querySelector('.reset')
-
+const playerCounter = document.querySelector('.playercounter')
+const compCounter = document.querySelector('.compcounter')
 const buttons = document.querySelectorAll('button')
 
+//Events
 reset.addEventListener('click', resetGame)
 
 buttons.forEach(
-
 button => button.addEventListener('click', game)
-
 )
+
+
 
 
 
@@ -75,17 +77,17 @@ function playGame(playerSelection){
         else if(playerSelection === 'rock' && computerSelection ==='scissors'||
                 playerSelection === 'paper' && computerSelection ==='rock'||
                 playerSelection === 'scissors' && computerSelection ==='paper'){
-                   (playerCount <=5) ? playerCount++ : console.log('Reset');
+                   (playerCount <=5 && compCount <=5) ? playerCount++ : console.log('Reset');
+                   playerCounter.textContent=`${playerCount}`
                     display.textContent=`You Win! ${playerSelection} beats ${computerSelection}`
-
-                   
                     
                 }
 
         else if(computerSelection === 'rock' && playerSelection ==='scissors'||
                 computerSelection === 'paper' && playerSelection ==='rock'||
                 computerSelection === 'scissors' && playerSelection ==='paper'){
-                    (compCount <=5) ? compCount++ : console.log('Reset');
+                    (compCount <=5 && playerCount <=5) ? compCount++ : console.log('Reset');
+                    compCounter.textContent=`${compCount}`
                     display.textContent=`You Lose! ${computerSelection} beats ${playerSelection}`
                     
         }
@@ -116,4 +118,6 @@ function resetGame(){
     playerCount = 0
     compCount = 0
     display.textContent=''
+    playerCounter.textContent=`${playerCount}`
+    compCounter.textContent=`${compCount}`
 }

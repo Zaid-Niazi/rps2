@@ -1,17 +1,35 @@
 #container{
     text-align: center;
+    
 }
+
+.displaycontainer{
+
+    display: flex;
+    width: 80vw;
+    margin: 15px auto 0 auto;
+
+}
+
 
 .display{
     border: 5px solid black;
     width: 700px;
     height: 100px;
     font-size: 50px;
-}
-
-.display{
     margin: 20px auto 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    
+}
+
+.playercounter, 
+.compcounter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+    width: 100px;
+    font-size: 100px;
 }
