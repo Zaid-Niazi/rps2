@@ -38,17 +38,34 @@ function getComputerChoice(){
 
 // main function
 
+
 function game(e){
 
     playerSelection = e.target.className
 
+    if(playerCount!==5 || compCount !== 5){
 
+        playGame(playerSelection)
+
+    }
     
-       
-        computerSelection = ''
+    else if( playerCount===5  || compCount === 5){
+        display.textContent='RESET THE GAME'
+    }
+
+}
+
+
+
+
+
+function playGame(playerSelection){
+
+
+    computerSelection = ''
         getComputerChoice()
         console.log(computerSelection)
-        playerSelection = e.target.className
+        
         if (playerSelection === computerSelection){
             display.textContent=`Draw!`
 
@@ -58,7 +75,7 @@ function game(e){
         else if(playerSelection === 'rock' && computerSelection ==='scissors'||
                 playerSelection === 'paper' && computerSelection ==='rock'||
                 playerSelection === 'scissors' && computerSelection ==='paper'){
-                    playerCount++
+                   (playerCount <=5) ? playerCount++ : console.log('Reset');
                     display.textContent=`You Win! ${playerSelection} beats ${computerSelection}`
 
                    
@@ -68,31 +85,30 @@ function game(e){
         else if(computerSelection === 'rock' && playerSelection ==='scissors'||
                 computerSelection === 'paper' && playerSelection ==='rock'||
                 computerSelection === 'scissors' && playerSelection ==='paper'){
-                    compCount++
+                    (compCount <=5) ? compCount++ : console.log('Reset');
                     display.textContent=`You Lose! ${computerSelection} beats ${playerSelection}`
                     
         }
 
-
-    
-
     // conditional to display the winner 
 
-
-
-      if(playerCount>=5){
-      alert('Player is the champion')  
+        if(playerCount===5){
+            alert('Player is the champion')  
+            display.textContent='RESET THE GAME'
+            
+          }
+          else if(compCount===5){
+              alert('Computer is the champion')
+              display.textContent='RESET THE GAME'
+          
       
-    }
-    else if(compCount>=5){
-        alert('Computer is the champion')
-    
+      
+          
+      }
 
 
-    
 }
 
-}
 
 //Reset game
 
