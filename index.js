@@ -1,3 +1,22 @@
+// DOM 
+
+const container = document.getElementById('container')
+
+const rock = document.querySelector('.rock')
+const paper = document.querySelector('.paper')
+const scissors = document.querySelector('.scissors')
+const display = document.querySelector('.display')
+
+const buttons = document.querySelectorAll('button')
+
+buttons.forEach(
+
+button => button.addEventListener('click', game)
+
+)
+
+
+
 // Score counters and Choice variables
 
 let playerCount=0
@@ -16,16 +35,18 @@ function getComputerChoice(){
 
 // main function
 
-function game(){
+function game(e){
+
+    playerSelection = e.target.className
+
    playerCount=0
      compCount=0
     
-    for (let i =0; i<5; i++){
-        playerSelection = ''
+       
         computerSelection = ''
         getComputerChoice()
         console.log(computerSelection)
-        playerSelection = prompt('Choose').toLowerCase()
+        playerSelection = e.target.className
         if (playerSelection === computerSelection){
             alert(`Draw!`)
 
@@ -51,21 +72,23 @@ function game(){
         }
 
 
-    }
-
-    displayWinner()
+    
 
     // function to display the winner 
 
-    function displayWinner(){
 
-        if(playerCount>compCount){
-            alert('Player is the Champion!')
-        }else{alert('Computer Wins The Game!')}
 
+        if(playerCount>=5){
+      alert('Player is the champion')  
+      
     }
-
+    else if(compCount>=5){
+        alert('Computer is the champion')
+    
 
 
     
 }
+
+}
+
