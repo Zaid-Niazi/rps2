@@ -27,7 +27,8 @@ function game(){
         console.log(computerSelection)
         playerSelection = prompt('Choose').toLowerCase()
         if (playerSelection === computerSelection){
-            
+            alert(`Draw!`)
+
             
         }
 
