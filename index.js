@@ -6,8 +6,11 @@ const rock = document.querySelector('.rock')
 const paper = document.querySelector('.paper')
 const scissors = document.querySelector('.scissors')
 const display = document.querySelector('.display')
+const reset = document.querySelector('.reset')
 
 const buttons = document.querySelectorAll('button')
+
+reset.addEventListener('click', resetGame)
 
 buttons.forEach(
 
@@ -39,8 +42,7 @@ function game(e){
 
     playerSelection = e.target.className
 
-   playerCount=0
-     compCount=0
+
     
        
         computerSelection = ''
@@ -48,7 +50,7 @@ function game(e){
         console.log(computerSelection)
         playerSelection = e.target.className
         if (playerSelection === computerSelection){
-            alert(`Draw!`)
+            display.textContent=`Draw!`
 
             
         }
@@ -57,7 +59,7 @@ function game(e){
                 playerSelection === 'paper' && computerSelection ==='rock'||
                 playerSelection === 'scissors' && computerSelection ==='paper'){
                     playerCount++
-                    alert(`You Win! ${playerSelection} beats ${computerSelection}`)
+                    display.textContent=`You Win! ${playerSelection} beats ${computerSelection}`
 
                    
                     
@@ -67,18 +69,18 @@ function game(e){
                 computerSelection === 'paper' && playerSelection ==='rock'||
                 computerSelection === 'scissors' && playerSelection ==='paper'){
                     compCount++
-                    alert(`You Lose! ${computerSelection} beats ${playerSelection}`)
+                    display.textContent=`You Lose! ${computerSelection} beats ${playerSelection}`
                     
         }
 
 
     
 
-    // function to display the winner 
+    // conditional to display the winner 
 
 
 
-        if(playerCount>=5){
+      if(playerCount>=5){
       alert('Player is the champion')  
       
     }
@@ -92,3 +94,10 @@ function game(e){
 
 }
 
+//Reset game
+
+function resetGame(){
+    playerCount = 0
+    compCount = 0
+    display.textContent=''
+}
